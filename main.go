@@ -18,10 +18,11 @@ func echoHandler(w http.ResponseWriter, r *http.Request) {
 	decoder := json.NewDecoder(r.Body)
 	data := make(map[string]string)
 	err := decoder.Decode(&data)
+	w.WriteHeader(http.StatusOK)
 	if err != nil {
 		data["message"] = "error"
+		w.WriteHeader(http.StatusBadRequest)
 	}
-	w.WriteHeader(http.StatusOK)
 	w.Header().Set("Content-Type", "applicaton/json")
 	json.NewEncoder(w).Encode(data)
 }
