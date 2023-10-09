@@ -10,7 +10,7 @@ func defaultHandler(w http.ResponseWriter, r *http.Request) {
 	data := make(map[string]string)
 	data["message"] = "Hello!"
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusCreated)
+	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(data)
 }
 
@@ -21,6 +21,7 @@ func echoHandler(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		data["message"] = "error"
 	}
+	w.WriteHeader(http.StatusOK)
 	w.Header().Set("Content-Type", "applicaton/json")
 	json.NewEncoder(w).Encode(data)
 }
