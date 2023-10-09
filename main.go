@@ -21,6 +21,7 @@ func echoHandler(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		data["message"] = "error"
 	}
+	w.Header().Set("Content-Type", "applicaton/json")
 	json.NewEncoder(w).Encode(data)
 }
 
