@@ -25,6 +25,7 @@ func echoHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	// this is for deploying on Heroku
 	port := os.Getenv("port")
 	if port == "" {
 		port = "8000"
